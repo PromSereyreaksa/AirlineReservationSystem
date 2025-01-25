@@ -1,4 +1,4 @@
-
+package Booking;
 
 public class PricingSystem {
     private String source;
