@@ -19,7 +19,7 @@ public class Distance {
         return -1;
     }
     public static double[] getLongLat(String countryName) {
-        String url = "jdbc:mysql://192.168.0.103:3306/country";  // Use the server's public IP address
+        String url = "jdbc:mysql://localhost:3306/country";  // Use the server's public IP address
         String user = "root";
         String pass = "12345";
         try {
@@ -79,5 +79,3 @@ public class Distance {
         }
 
 }
-
-
