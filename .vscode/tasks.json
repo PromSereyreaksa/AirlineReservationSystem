@@ -1,19 +1,33 @@
 {
     "version": "2.0.0",
     "tasks": [
-      {
-        "label": "build",
-        "type": "shell",
-        "command": "javac",
-        "args": [
-          "-d",
-          "bin",
-          "${fileDirname}/*.java"
-        ],
-        "group": {
-          "kind": "build",
-          "isDefault": true
+        {
+            "label": "Compile Java Files",
+            "type": "shell",
+            "command": "javac",
+            "args": [
+                "-cp", "lib/*",  // Include all JAR files in the lib folder in the classpath
+                "-d", "bin",      // Specify the output directory for compiled classes
+                "src/**/*.java"   // Compile all .java files in the src folder
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": ["$javac"]
+        },
+        {
+            "label": "Run Java Program",
+            "type": "shell",
+            "command": "java",
+            "args": [
+                "-cp", "bin:lib/*",  // Include compiled classes from the bin folder and all JAR files from the lib folder
+                "Booking.Distance"   // Replace with the fully qualified name of your main class
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            }
         }
-      }
     ]
-  }
+}

@@ -1,9 +1,18 @@
 package Booking;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+
 public class PricingSystem {
     private String source;
     private String destination;
     private String travelClass;
+    String source;
+    String destination;
+    LocalDate departureDate;
+    LocalTime departureTime;
+    LocalDate arrivalDate;
+    LocalTime arrivalTime;
     private final double economyClass = 1.0;
     private final double  businessClass = 1.5;
     private final double  firstClass = 2.0;
