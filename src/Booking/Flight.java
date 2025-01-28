@@ -17,4 +17,5 @@ public class Flight {
     int availableSeats;
     double baseFare;
     List<Seat> seatMap;
+    
 }
