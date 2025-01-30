@@ -2,9 +2,13 @@ package Booking;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.time.temporal.ChronoUnit;
 
 public class PricingSystem {
+
+    // Constants for travel class multipliers
+    private static final double ECONOMY_CLASS = 1.0;
+    private static final double BUSINESS_CLASS = 1.5;
+    private static final double FIRST_CLASS = 2.0;
 
     // Attributes
     private String source;
@@ -14,14 +18,17 @@ public class PricingSystem {
     private LocalTime departureTime;
     private LocalDate arrivalDate;
     private LocalTime arrivalTime;
-    private static double economyClass = 1.0;
-    private static double businessClass = 1.5;
-    private static double firstClass = 2.0;
+    // Prevents direct modification from outside the class, reducing errors.
+    //private: only class can use this
+
+    /*
+     *
+     */
 
     // Constructor
     public PricingSystem(String source, String destination, String travelClass,
-            LocalDate departureDate, LocalDate arrivalDate,
-            LocalTime departureTime, LocalTime arrivalTime) {
+                         LocalDate departureDate, LocalDate arrivalDate,
+                         LocalTime departureTime, LocalTime arrivalTime) {
         this.source = source;
         this.destination = destination;
         this.travelClass = travelClass;
@@ -29,118 +36,42 @@ public class PricingSystem {
         this.arrivalDate = arrivalDate;
         this.departureTime = departureTime;
         this.arrivalTime = arrivalTime;
-    }
+        }
 
-    // Function to calculate final price including all factors
+    // Method placeholders
+    /*  None of these are static methods because these calculate instance-specific data.
+     * so each price and each calculation is based on an instance.
+     * they use data that belongs to a specific booking (like source, destination, and travelClass).
+     */
     public double calculateFinalPrice() {
-        double distance = Distance.getDistance(source, destination);
-        double basePrice = calculateBasePrice(distance, travelClass);
-        double seasonalityFactor = calculateSeasonalityFactor("summer");
-        double timeOfBookingFactor = calculateTimeOfBookingFactor();
-        double fuelCostFactor = calculateFuelCostFactor(distance, 10.0);
-        // double airlineStrategyFactor = calculateAirlineStrategyFactor();
-        // double operatingCostFactor = calculateOperatingCostFactor();
-        // double demandFactor = calculateDemandFactor();
-        // double competitionFactor = calculateCompetitionFactor();
-
-        return basePrice * seasonalityFactor * timeOfBookingFactor * fuelCostFactor;
+        return 0.0;
     }
 
-    // Function to calculate base price based on distance and travel class
     public double calculateBasePrice(double distance, String travelClass) {
-        double pricePerKm = 3.0;
-        double totalPrice = 0;
-        if (travelClass.isEmpty()) {
-            return -1;
-        } else if (distance == -1) {
-            return -1;
-        } else if (!travelClass.equals("economy") && !travelClass.equals("business") && !travelClass.equals("first")) {
-            return -1;
-        }
-
-        if (travelClass.equalsIgnoreCase("economy")) {
-            totalPrice = distance * pricePerKm * economyClass;
-        } else if (travelClass.equalsIgnoreCase("business")) {
-            totalPrice = distance * pricePerKm * businessClass;
-        } else if (travelClass.equalsIgnoreCase("first")) {
-            totalPrice = distance * pricePerKm * firstClass;
-        }
-        return totalPrice;
+        return 0.0;
     }
 
-    // Function to calculate demand factor (skeleton)
-    /*  public double calculateDemandFactor() {
-        // Logic to be implemented
-        return 1.0;
-    } */
-
-    // Function to calculate seasonality factor (skeleton)
     public double calculateSeasonalityFactor(String season) {
-        if (season.equalsIgnoreCase("summer")) {
-            return 2;
-        } else if (season.equalsIgnoreCase("winter")) {
-            return 1.5;
-        } else {
-            return 1.0;
-        }
+        return 0.0;
     }
 
-    // Function to calculate competition factor (skeleton)
-    /*  public double calculateCompetitionFactor() {
-        // Logic to be implemented
-        return 1.0;
-    } */
-    // Function to calculate time of booking factor (skeleton)
     public double calculateTimeOfBookingFactor() {
-        if (departureDate.isBefore(LocalDate.now().plusDays(7))) {
-            return 1.7;
-        } else if (departureDate.isBefore(LocalDate.now().plusDays(14))) {
-            return 1.3;
-        } else if (departureDate.isBefore(LocalDate.now().plusDays(30))) {
-            return 1.0;
-        }
-        return 0.8;
-        //  if customer book earlier than 30+ days we have discounted price
+        return 0.0;
     }
 
-    // Function to calculate fuel cost factor (skeleton)
     public double calculateFuelCostFactor(double distance, double fuelEfficiency) {
-        // Calculate the fuel cost factor based on fuel price, distance, and efficiency
-        double fuelCost = (distance / fuelEfficiency) * 0.547;
-        // Normalize or adjust the factor as needed
-        return fuelCost > 100 ? 1.2 : 1.0; // Example: Apply a 1.2x factor if fuel cost exceeds 100
+        return 0.0;
     }
 
-    // Function to calculate operating cost factor (skeleton)
-    /* public double calculateOperatingCostFactor() {
-        // Logic to be implemented
-        return 1.0;
-    } */
-    // Function to calculate total travel time
     public String calculateTotalTravelTime() {
-        long hours = ChronoUnit.HOURS.between(departureTime, arrivalTime);
-        long minutes = ChronoUnit.MINUTES.between(departureTime, arrivalTime) % 60;
-        return hours + " hours and " + minutes + " minutes";
+        return "";
     }
 
-    // Function to validate travel class
     public boolean validateTravelClass(String travelClass) {
-        return travelClass.equalsIgnoreCase("economy")
-                || travelClass.equalsIgnoreCase("business")
-                || travelClass.equalsIgnoreCase("first");
+        return false;
     }
 
-    // Function to validate date and time
-    public boolean validateDateTime(LocalDate date, LocalTime time) {
-        LocalDate currentDate = LocalDate.now();
-        LocalTime currentTime = LocalTime.now();
-        return !date.isBefore(currentDate) && !(date.isEqual(currentDate) && time.isBefore(currentTime));
-    }
-
-    // Function to generate booking ID (skeleton)
     public String generateBookingID() {
-        // Logic to be implemented
-        return "BK" + departureDate.getYear() + departureDate.getMonthValue()
-                + departureDate.getDayOfMonth() + (int) (Math.random() * 1000);
+        return "";
     }
 }

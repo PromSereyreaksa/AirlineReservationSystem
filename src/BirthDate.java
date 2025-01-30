@@ -1,4 +1,5 @@
 
+
 public class BirthDate {
     private int day;
     private int month;
@@ -10,4 +11,5 @@ public class BirthDate {
         this.month = month;
         this.year = year;
     }
+
 }
