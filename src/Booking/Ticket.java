@@ -2,20 +2,22 @@ package Booking;
 
 import java.time.LocalDateTime;
 
-import Flight.Flight;
+import Flight.FlightManagement;
 
 public class Ticket {
     String ticketId;
-    Flight flight;
+    FlightManagement flight;
     Passenger passenger;
     String seatNumber;
     LocalDateTime bookingDateTime;
     String ticketStatus;
     double totalFare;
 
-    Ticket(String ticketId, String seatnumber )
-    {
+    // Constructor
+    Ticket(String ticketId, String seatNumber) {
         this.ticketId = ticketId;
-        this.seatNumber = seatnumber;
-    };
+        this.seatNumber = seatNumber;
+    }
+
+
 }
