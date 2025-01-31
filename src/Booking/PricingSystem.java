@@ -6,11 +6,12 @@ import java.time.LocalTime;
 public class PricingSystem {
 
     // Constants for travel class multipliers
-    static final double ECONOMY_CLASS = 1.0;
-    static final double BUSINESS_CLASS = 1.5;
-    static final double FIRST_CLASS = 2.0;
+    static final double economyClass = 1.0; // to be adjusted
+    static final double businessClass = 1.5; // to be adjusted
+    static final double firstClass = 2.0; // to be adjusted
     // rates not actual price
     // Attributes
+    private double ratePerMile;
     private String source;
     private String destination;
     private String travelClass;
@@ -19,10 +20,10 @@ public class PricingSystem {
     private LocalDate arrivalDate;
     private LocalTime arrivalTime;
     // Prevents direct modification from outside the class, reducing errors.
-    //private: only class can use this
+    //private: only this class can use this
 
     // Constructor
-    public PricingSystem(String source, String destination, String travelClass,
+    public PricingSystem(String source, String destination, String travelClass, double ratePerMile,
             LocalDate departureDate, LocalDate arrivalDate,
             LocalTime departureTime, LocalTime arrivalTime) {
         this.source = source;
@@ -32,6 +33,31 @@ public class PricingSystem {
         this.arrivalDate = arrivalDate;
         this.departureTime = departureTime;
         this.arrivalTime = arrivalTime;
+        this.ratePerMile = ratePerMile;
+        /*
+         * to be implemented:
+         * get distance from source and destination.
+         */
+    }
+    public PricingSystem(String source, String destination, String travelClass,double ratePerMile){
+        this.source = source;
+        this.destination = destination;
+        this.travelClass = travelClass;
+        this.ratePerMile = ratePerMile;
+        //basefare
+    }
+
+    public double calculateRatePerMile(double distance) {
+        if (distance >= 5000) {
+            // Long haul flight
+            return 0.15;
+        } else if (distance >= 2000) {
+            // Medium haul flight
+            return 0.30;
+        } else {
+            // Short haul flight
+            return 0.50;
+        }
     }
     // --------------------*-------------------------
 
@@ -46,10 +72,13 @@ public class PricingSystem {
     }
 
     public double calculateBasePrice(double distance, String travelClass) {
-        return 0.0;
+        // distance = length between source and destination but returned in kilometer
+        // price is to be adjusted
+        return 0.0; // distance * travelClass;
     }
 
     public double calculateDemandFactor(int availableSeats, int totalSeats) {
+        // occupancyrate = available seat left
         double occupancyRate = (double) (totalSeats - availableSeats) / totalSeats; // Seat occupancy percentage
         if (occupancyRate > 0.8) {  // High demand (80%+ seats booked)
             return 1.5;
@@ -61,7 +90,10 @@ public class PricingSystem {
     }
 
     public  double calculateSeasonalityFactor( String season) {
-        if(season.equalsIgnoreCase("winter")){ //equalsIgnoreCase: case insensitive
+        if(season.equalsIgnoreCase("winter")){
+             //equalsIgnoreCase: case insensitive
+             // holiday seasons..
+             // harsh weathers
             return 1.5;
         } else if (season.equalsIgnoreCase("summer")){
             return 1.2;
@@ -71,22 +103,29 @@ public class PricingSystem {
     }
 
     public double calculateTimeOfBookingFactor() {
+        // if night -> more expensive and vice versa
         return 0.0;
     }
 
     public double calculateFuelCostFactor(double distance, double fuelEfficiency) {
+        // given the distance of the flight -> determine the amount of fuel required for the flight -> multiply it by   the cost of fuel per unit
         return 0.0;
     }
 
-    /* public String calculateTotalTravelTime() {
-        return "";
 
-    public  boolean validateTravelClass(String travelClass) {
+    public boolean validateTravelClass(String travelClass) {
+        // check if they enter a valid or invalid class
+        // could just show a list of class to be selected later (WIP)
         if(travelClass.equalsIgnoreCase("economy") || travelClass.equalsIgnoreCase("business") || travelClass.equalsIgnoreCase("first")){
             return true;
         }
         return false;
     }
+
+    /* public String calculateTotalTravelTime() {
+        return "";
+
+
 
     public String generateBookingID() {
         return "";

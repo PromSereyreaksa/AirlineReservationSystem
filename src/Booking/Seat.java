@@ -16,25 +16,28 @@ public class Seat {
 
     // Method to book the seat
     public boolean bookSeat() {
-        if (!isBooked) {
-            isBooked = true;
-            return true;
-        }
+
         return false;  // Seat already booked
     }
 
     // Method to cancel the seat booking
     public boolean cancelBooking() {
-        if (isBooked) {
-            isBooked = false;
-            return true;
-        }
+
         return false;  // Seat was not booked
     }
 
     // Method to adjust the fare based on seat class or other factors
     public void adjustFare(double adjustment) {
         this.fareAdjustment += adjustment;
+        // discounted
+        // extra charges
+        // dynamic pricing
+        /*
+         * Example Pricing:
+
+        Economy Class: $10–$50 extra for window seats.
+        Business Class: Already premium, but window seats may still be more desirable.
+         */
     }
 
     // Method to check the booking status of the seat
@@ -42,13 +45,13 @@ public class Seat {
         return isBooked;
     }
 
-    // Method to get the class type of the seat
-    public String getClassType() {
+    // Method to show the class type of the seat
+    public String ClassType() {
         return classType;
     }
 
-    // Method to get the final fare for the seat (base fare + adjustments)
-    public double getFinalFare(double baseFare) {
+    // Method to calculate the final fare for the seat (base fare + adjustments)
+    public double FinalFare(double baseFare) {
         return baseFare + fareAdjustment;
     }
 

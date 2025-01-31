@@ -12,7 +12,7 @@ public class User{
     private BirthDate birthDate;
     private boolean isAdmin;
 
-    public User(int userId, String userName, String lastName, String firstName, String email, String password, String confirmPassword, BirthDate birthDate, boolean isAdmin){
+    public User(String userName, String lastName, String firstName, String email, String password, String confirmPassword, BirthDate birthDate){
         this.userName = userName;
         this.lastName = lastName;
         this.firstName = firstName;
@@ -134,7 +134,7 @@ public class User{
 
     public boolean isUnderage(BirthDate birthDate){
         return calculateAge(birthDate) < 18;
-    }
+        }
 
 
 }

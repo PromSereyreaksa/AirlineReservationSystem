@@ -1,5 +1,4 @@
 
-
 public class BirthDate {
     private int day;
     private int month;
