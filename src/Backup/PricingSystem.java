@@ -10,6 +10,13 @@ public class PricingSystem {
     private static final double ECONOMY_CLASS = 1.0;
     private static final double BUSINESS_CLASS = 1.5;
     private static final double FIRST_CLASS = 2.0;
+    // to be implemented:
+    /*
+     * add class
+     * upgrade class
+     * refund
+     * flight discounts (delays)
+     */
 
     // Attributes
     private String source;

@@ -37,11 +37,6 @@ public class Passenger {
         return this.tickets;
     }
 
-    // Update contact details (e.g., phone number or email)
-    public void updateContactDetails(String newEmail, String newContactNumber) {
-        this.email = newEmail;
-        this.contactNumber = newContactNumber;
-    }
 
     // Check if the passenger has a valid ticket (could be based on some conditions)
     public boolean hasValidTicket() {
@@ -49,17 +44,15 @@ public class Passenger {
     }
 
     // Get the passenger's full name
-    public String getFullName() {
-        return this.firstName + " " + this.lastName;
-    }
 
-    // Generate a passenger summary (could be used in booking summaries or reports)
+
+  /*  // Generate a passenger summary (could be used in booking summaries or reports)
     public String generatePassengerSummary() {
         return "Passenger ID: " + this.passengerId + "\n" +
-               "Name: " + this.getFullName() + "\n" +
+               "Name: " + this.FullName() + "\n" +
                "Email: " + this.email + "\n" +
                "Contact: " + this.contactNumber;
-    }
+    } */
 
 
 }
