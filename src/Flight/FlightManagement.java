@@ -1,18 +1,29 @@
-package Flight;
+
 public class FlightManagement {
-    private int flightID;
-    private String source;
-    private String destination;
-    private int distance;
-    private String departureTime;
-    private String arrivalTime;
+    private String flightID;
+    private double distance;
     private double base_Price;
     private int availableSeats;
     private int capacity;
 
-    FlightManagement(int flightID,String source, String destination )
+    public FlightManagement(String flightID,String source, String destination, double distance, double base_Price, int availableSeats, int capacity )
     {
         this.flightID = flightID;
+        this.distance = distance;
+        this.base_Price = base_Price;
+        this.availableSeats = availableSeats;
+        this.capacity = capacity;
+    }
 
-    };
+    public String getFlightId(){
+        return flightID;
+    }
+    public double finalDistance(){
+        return distance;
+    }
+    public boolean AvailableSeat(){
+        return true;
+    }
 }
+
+
