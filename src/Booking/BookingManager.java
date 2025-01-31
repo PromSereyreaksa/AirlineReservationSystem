@@ -7,6 +7,8 @@ public class BookingManager {
      String name;
      String contactNumber;
      List<Flight> flights;
+
+     
   }
 }
 
