@@ -1,4 +1,4 @@
-package Flight;
+
 public class FlightManagement {
     private String flightID;
     private double distance;
@@ -6,7 +6,7 @@ public class FlightManagement {
     private int availableSeats;
     private int capacity;
 
-    FlightManagement(String flightID,String source, String destination, double distance, double base_Price, int availableSeats, int capacity )
+    public FlightManagement(String flightID,String source, String destination, double distance, double base_Price, int availableSeats, int capacity )
     {
         this.flightID = flightID;
         this.distance = distance;
