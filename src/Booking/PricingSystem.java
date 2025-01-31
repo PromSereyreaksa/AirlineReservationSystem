@@ -6,9 +6,9 @@ import java.time.LocalTime;
 public class PricingSystem {
 
     // Constants for travel class multipliers
-    private static final double ECONOMY_CLASS = 1.0;
-    private static final double BUSINESS_CLASS = 1.5;
-    private static final double FIRST_CLASS = 2.0;
+    static final double ECONOMY_CLASS = 1.0;
+    static final double BUSINESS_CLASS = 1.5;
+    static final double FIRST_CLASS = 2.0;
 
     // Attributes
     private String source;
@@ -36,7 +36,7 @@ public class PricingSystem {
         this.arrivalDate = arrivalDate;
         this.departureTime = departureTime;
         this.arrivalTime = arrivalTime;
-        }
+    }
 
     // Method placeholders
     /*  None of these are static methods because these calculate instance-specific data.
